@@ -3,7 +3,7 @@ The Ray Tracer Challenge (C)
 
 This repo aims to follow Jami's Ray Tracer Challenge.
 
-- [ ] Tupples, Points and Vectors
+- [x] Tupples, Points and Vectors
 - [ ] Drawing on a Canvas
 - [ ] Matrices
 - [ ] Matrix Transformations
