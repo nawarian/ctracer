@@ -10,7 +10,7 @@ SRCDIR=src
 BUILDDIR=build
 TESTSDIR=tests
 
-OBJS=$(BUILDDIR)/tuple.o
+OBJS=$(patsubst $(SRCDIR)/%.c,$(BUILDDIR)/%.o, $(wildcard $(SRCDIR)/*.c))
 
 all: $(BUILDDIR) $(OBJS)
 
