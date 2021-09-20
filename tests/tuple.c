@@ -15,6 +15,7 @@ void test_tuple_sub_vector_from_zero_vector(void);
 void test_tuple_negate(void);
 void test_tuple_mul_scalar(void);
 void test_tuple_mul_fraction(void);
+void test_tuple_div(void);
 
 int main(void)
 {
@@ -32,6 +33,7 @@ int main(void)
     test_tuple_negate();
     test_tuple_mul_scalar();
     test_tuple_mul_fraction();
+    test_tuple_div();
 
     return 0;
 }
@@ -202,4 +204,17 @@ void test_tuple_mul_fraction(void)
     assert(mul.y == comp.y);
     assert(mul.z == comp.z);
     assert(mul.w == comp.w);
+}
+
+void test_tuple_div(void)
+{
+    tuple_t a = tuple(1, -2, 3, -4);
+
+    tuple_t div = tuple_div(a, 2);
+    tuple_t comp = tuple(0.5, -1, 1.5, -2);
+
+    assert(div.x == comp.x);
+    assert(div.y == comp.y);
+    assert(div.z == comp.z);
+    assert(div.w == comp.w);
 }

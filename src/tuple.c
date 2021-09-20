@@ -31,6 +31,16 @@ tuple_t tuple_add(tuple_t t1, tuple_t t2)
     };
 }
 
+tuple_t tuple_div(tuple_t t, float factor)
+{
+    return (tuple_t) {
+        t.x / factor,
+        t.y / factor,
+        t.z / factor,
+        t.w / factor
+    };
+}
+
 tuple_t tuple_mul(tuple_t t, float factor)
 {
     return (tuple_t) {
