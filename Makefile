@@ -28,7 +28,7 @@ clean:
 .PHONY: clean
 
 $(BUILDDIR)/%_test: $(BUILDDIR)/%_test.o $(BUILDDIR)/%.o
-	$(CC) $? -o $@ $(LFLAGS)
+	$(CC) $(BUILDDIR)/$*.o $(BUILDDIR)/$*_test.o -o $@ $(LFLAGS)
 
 $(BUILDDIR)/%_test.o: $(TESTSDIR)/%.c
 	$(CC) -c $? -o $@ $(CLFAGS) -I$(SRCDIR)
