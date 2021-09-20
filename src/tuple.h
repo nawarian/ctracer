@@ -17,4 +17,6 @@ tuple_t vector(float x, float y, float z);
 bool is_point(tuple_t t);
 bool is_vector(tuple_t t);
 
+tuple_t tuple_add(tuple_t t1, tuple_t t2);
+
 #endif

@@ -25,3 +25,13 @@ bool is_vector(tuple_t t)
 {
     return t.w == 0.0;
 }
+
+tuple_t tuple_add(tuple_t t1, tuple_t t2)
+{
+    return (tuple_t) {
+        t1.x + t2.x,
+        t1.y + t2.y,
+        t1.z + t2.z,
+        t1.w + t2.w
+    };
+}

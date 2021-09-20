@@ -6,6 +6,7 @@ void test_is_point(void);
 void test_is_vector(void);
 void test_point(void);
 void test_vector(void);
+void test_tuple_add(void);
 
 int main(void)
 {
@@ -14,6 +15,7 @@ int main(void)
     test_is_vector();
     test_point();
     test_vector();
+    test_tuple_add();
 
     return 0;
 }
@@ -64,4 +66,18 @@ void test_vector(void)
     assert(v.y == comp.y);
     assert(v.z == comp.z);
     assert(v.w == comp.w);
+}
+
+void test_tuple_add(void)
+{
+    tuple_t a1 = tuple(3, -2, 5, 1);
+    tuple_t a2 = tuple(-2, 3, 1, 0);
+
+    tuple_t sum = tuple_add(a1, a2);
+    tuple_t comp = tuple(1, 1, 6, 1);
+
+    assert(sum.x == comp.x);
+    assert(sum.y == comp.y);
+    assert(sum.z == comp.z);
+    assert(sum.w == comp.w);
 }
