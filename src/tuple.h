@@ -23,6 +23,8 @@ tuple_t tuple_negate(tuple_t t);
 tuple_t tuple_sub(tuple_t t1, tuple_t t2);
 
 tuple_t vector(float x, float y, float z);
+float   vector_magnitude(tuple_t vec);
+tuple_t vector_normalize(tuple_t vec);
 tuple_t vector_zero(void);
 
 #endif

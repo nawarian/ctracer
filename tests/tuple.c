@@ -1,21 +1,32 @@
 #include "tuple.h"
 #include <assert.h>
+#include <math.h>
+#include <stdbool.h>
 
 void test_tuple(void);
 void test_is_point(void);
 void test_is_vector(void);
 void test_point(void);
 void test_vector(void);
+void test_vector_magnitude(void);
+void test_vector_magnitude_normalized_equals_zero(void);
+void test_vector_normalize(void);
+void test_vector_zero(void);
 void test_tuple_add(void);
 void test_tuple_sub_point(void);
 void test_tuple_sub_point_vector(void);
 void test_tuple_sub_vector_vector(void);
-void test_vector_zero(void);
 void test_tuple_sub_vector_from_zero_vector(void);
 void test_tuple_negate(void);
 void test_tuple_mul_scalar(void);
 void test_tuple_mul_fraction(void);
 void test_tuple_div(void);
+
+// float comparison helper function
+bool _fequals(float f1, float f2)
+{
+    return fabsf(f1 - f2) < 0.00001;
+}
 
 int main(void)
 {
@@ -24,11 +35,14 @@ int main(void)
     test_is_vector();
     test_point();
     test_vector();
+    test_vector_magnitude();
+    test_vector_magnitude_normalized_equals_zero();
+    test_vector_normalize();
+    test_vector_zero();
     test_tuple_add();
     test_tuple_sub_point();
     test_tuple_sub_point_vector();
     test_tuple_sub_vector_vector();
-    test_vector_zero();
     test_tuple_sub_vector_from_zero_vector();
     test_tuple_negate();
     test_tuple_mul_scalar();
@@ -86,6 +100,58 @@ void test_vector(void)
     assert(v.w == comp.w);
 }
 
+void test_vector_magnitude(void)
+{
+    assert(vector_magnitude(vector(1, 0, 0)) == 1);
+    assert(vector_magnitude(vector(0, 1, 0)) == 1);
+    assert(vector_magnitude(vector(0, 0, 1)) == 1);
+
+    assert(vector_magnitude(vector(1, 2, 3)) == sqrtf(14));
+    assert(vector_magnitude(vector(-1, -2, -3)) == sqrtf(14));
+}
+
+void test_vector_normalize(void)
+{
+    tuple_t vec = vector(4, 0, 0);
+
+    tuple_t norm = vector_normalize(vec);
+    tuple_t comp = vector(1, 0, 0);
+
+    assert(norm.x == comp.x);
+    assert(norm.y == comp.y);
+    assert(norm.z == comp.z);
+    assert(norm.w == comp.w);
+
+    vec = vector(1, 2, 3);
+
+    norm = vector_normalize(vec);
+    comp = vector(0.26726, 0.53452, 0.80178);
+
+    assert(_fequals(norm.x, comp.x));
+    assert(_fequals(norm.y, comp.y));
+    assert(_fequals(norm.z, comp.z));
+    assert(_fequals(norm.w, comp.w));
+}
+
+void test_vector_magnitude_normalized_equals_zero(void)
+{
+    tuple_t vec = vector(1, 2, 3);
+    tuple_t norm = vector_normalize(vec);
+
+    assert(_fequals(vector_magnitude(norm), 1));
+}
+
+void test_vector_zero(void)
+{
+    tuple_t zero = vector_zero();
+    tuple_t comp = vector(0, 0, 0);
+
+    assert(zero.x == comp.x);
+    assert(zero.y == comp.y);
+    assert(zero.z == comp.z);
+    assert(zero.w == comp.w);
+}
+
 void test_tuple_add(void)
 {
     tuple_t a1 = tuple(3, -2, 5, 1);
@@ -140,17 +206,6 @@ void test_tuple_sub_vector_vector(void)
     assert(sub.y == comp.y);
     assert(sub.z == comp.z);
     assert(sub.w == comp.w);
-}
-
-void test_vector_zero(void)
-{
-    tuple_t zero = vector_zero();
-    tuple_t comp = vector(0, 0, 0);
-
-    assert(zero.x == comp.x);
-    assert(zero.y == comp.y);
-    assert(zero.z == comp.z);
-    assert(zero.w == comp.w);
 }
 
 void test_tuple_sub_vector_from_zero_vector(void)

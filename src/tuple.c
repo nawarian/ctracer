@@ -1,4 +1,5 @@
 #include "tuple.h"
+#include <math.h>
 #include <stdbool.h>
 
 tuple_t tuple(float x, float y, float z, float w)
@@ -38,6 +39,26 @@ tuple_t tuple_div(tuple_t t, float factor)
         t.y / factor,
         t.z / factor,
         t.w / factor
+    };
+}
+
+float vector_magnitude(tuple_t vec)
+{
+    return sqrtf(
+        powf(vec.x, 2)
+        + powf(vec.y, 2)
+        + powf(vec.z, 2)
+        + powf(vec.w, 2)
+    );
+}
+
+tuple_t vector_normalize(tuple_t vec)
+{
+    return (tuple_t) {
+        vec.x / vector_magnitude(vec),
+        vec.y / vector_magnitude(vec),
+        vec.z / vector_magnitude(vec),
+        vec.w / vector_magnitude(vec)
     };
 }
 
