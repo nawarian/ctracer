@@ -4,7 +4,7 @@ MKDIR=mkdir -p
 RM=rm -rf
 
 CFLAGS=
-LFLAGS=
+LFLAGS=-Wl,-dead_strip
 
 SRCDIR=src
 BUILDDIR=build
