@@ -42,6 +42,16 @@ tuple_t tuple_div(tuple_t t, float factor)
     };
 }
 
+float tuple_dot(tuple_t t1, tuple_t t2)
+{
+    return
+        t1.x * t2.x +
+        t1.y * t2.y +
+        t1.z * t2.z +
+        t1.w * t2.w
+    ;
+}
+
 float vector_magnitude(tuple_t vec)
 {
     return sqrtf(

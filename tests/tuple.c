@@ -21,6 +21,7 @@ void test_tuple_negate(void);
 void test_tuple_mul_scalar(void);
 void test_tuple_mul_fraction(void);
 void test_tuple_div(void);
+void test_tuple_dot(void);
 
 // float comparison helper function
 bool _fequals(float f1, float f2)
@@ -48,6 +49,7 @@ int main(void)
     test_tuple_mul_scalar();
     test_tuple_mul_fraction();
     test_tuple_div();
+    test_tuple_dot();
 
     return 0;
 }
@@ -272,4 +274,12 @@ void test_tuple_div(void)
     assert(_fequals(div.y, comp.y));
     assert(_fequals(div.z, comp.z));
     assert(_fequals(div.w, comp.w));
+}
+
+void test_tuple_dot(void)
+{
+    tuple_t a = vector(1, 2, 3);
+    tuple_t b = vector(2, 3, 4);
+
+    assert(_fequals(tuple_dot(a, b), 20));
 }
