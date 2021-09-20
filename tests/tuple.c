@@ -10,6 +10,9 @@ void test_tuple_add(void);
 void test_tuple_sub_point(void);
 void test_tuple_sub_point_vector(void);
 void test_tuple_sub_vector_vector(void);
+void test_vector_zero(void);
+void test_tuple_sub_vector_from_zero_vector(void);
+void test_tuple_negate(void);
 
 int main(void)
 {
@@ -22,6 +25,9 @@ int main(void)
     test_tuple_sub_point();
     test_tuple_sub_point_vector();
     test_tuple_sub_vector_vector();
+    test_vector_zero();
+    test_tuple_sub_vector_from_zero_vector();
+    test_tuple_negate();
 
     return 0;
 }
@@ -128,4 +134,42 @@ void test_tuple_sub_vector_vector(void)
     assert(sub.y == comp.y);
     assert(sub.z == comp.z);
     assert(sub.w == comp.w);
+}
+
+void test_vector_zero(void)
+{
+    tuple_t zero = vector_zero();
+    tuple_t comp = vector(0, 0, 0);
+
+    assert(zero.x == comp.x);
+    assert(zero.y == comp.y);
+    assert(zero.z == comp.z);
+    assert(zero.w == comp.w);
+}
+
+void test_tuple_sub_vector_from_zero_vector(void)
+{
+    tuple_t zero = vector_zero();
+    tuple_t vec = vector(1, -2, 3);
+
+    tuple_t sub = tuple_sub(zero, vec);
+    tuple_t comp = vector(-1, 2, -3);
+
+    assert(sub.x == comp.x);
+    assert(sub.y == comp.y);
+    assert(sub.z == comp.z);
+    assert(sub.w == comp.w);
+}
+
+void test_tuple_negate(void)
+{
+    tuple_t a = tuple(1, -2, 3, -4);
+
+    tuple_t minus_a = tuple_negate(a);
+    tuple_t comp = tuple(-1, 2, -3, 4);
+
+    assert(minus_a.x == comp.x);
+    assert(minus_a.y == comp.y);
+    assert(minus_a.z == comp.z);
+    assert(minus_a.w == comp.w);
 }

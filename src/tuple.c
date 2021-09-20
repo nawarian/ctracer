@@ -11,11 +11,6 @@ tuple_t point(float x, float y, float z)
     return (tuple_t) { x, y, z, 1.0 };
 }
 
-tuple_t vector(float x, float y, float z)
-{
-    return (tuple_t) { x, y, z, 0.0 };
-}
-
 bool is_point(tuple_t t)
 {
     return t.w == 1.0;
@@ -36,6 +31,16 @@ tuple_t tuple_add(tuple_t t1, tuple_t t2)
     };
 }
 
+tuple_t tuple_negate(tuple_t t)
+{
+    return (tuple_t) {
+        -t.x,
+        -t.y,
+        -t.z,
+        -t.w
+    };
+}
+
 tuple_t tuple_sub(tuple_t t1, tuple_t t2)
 {
     return (tuple_t) {
@@ -44,4 +49,14 @@ tuple_t tuple_sub(tuple_t t1, tuple_t t2)
         t1.z - t2.z,
         t1.w - t2.w
     };
+}
+
+tuple_t vector(float x, float y, float z)
+{
+    return (tuple_t) { x, y, z, 0.0 };
+}
+
+tuple_t vector_zero(void)
+{
+    return vector(0, 0, 0);
 }
