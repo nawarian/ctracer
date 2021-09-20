@@ -7,6 +7,9 @@ void test_is_vector(void);
 void test_point(void);
 void test_vector(void);
 void test_tuple_add(void);
+void test_tuple_sub_point(void);
+void test_tuple_sub_point_vector(void);
+void test_tuple_sub_vector_vector(void);
 
 int main(void)
 {
@@ -16,6 +19,9 @@ int main(void)
     test_point();
     test_vector();
     test_tuple_add();
+    test_tuple_sub_point();
+    test_tuple_sub_point_vector();
+    test_tuple_sub_vector_vector();
 
     return 0;
 }
@@ -80,4 +86,46 @@ void test_tuple_add(void)
     assert(sum.y == comp.y);
     assert(sum.z == comp.z);
     assert(sum.w == comp.w);
+}
+
+void test_tuple_sub_point(void)
+{
+    tuple_t p1 = point(3, 2, 1);
+    tuple_t p2 = point(5, 6, 7);
+
+    tuple_t sub = tuple_sub(p1, p2);
+    tuple_t comp = vector(-2, -4, -6);
+
+    assert(sub.x == comp.x);
+    assert(sub.y == comp.y);
+    assert(sub.z == comp.z);
+    assert(sub.w == comp.w);
+}
+
+void test_tuple_sub_point_vector(void)
+{
+    tuple_t p1 = point(3, 2, 1);
+    tuple_t vec = vector(5, 6, 7);
+
+    tuple_t sub = tuple_sub(p1, vec);
+    tuple_t comp = point(-2, -4, -6);
+
+    assert(sub.x == comp.x);
+    assert(sub.y == comp.y);
+    assert(sub.z == comp.z);
+    assert(sub.w == comp.w);
+}
+
+void test_tuple_sub_vector_vector(void)
+{
+    tuple_t vec1 = vector(3, 2, 1);
+    tuple_t vec2 = vector(5, 6, 7);
+
+    tuple_t sub = tuple_sub(vec1, vec2);
+    tuple_t comp = vector(-2, -4, -6);
+
+    assert(sub.x == comp.x);
+    assert(sub.y == comp.y);
+    assert(sub.z == comp.z);
+    assert(sub.w == comp.w);
 }
