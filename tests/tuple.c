@@ -56,10 +56,10 @@ void test_tuple(void)
 {
     tuple_t t = tuple(10.0, 5.0, 15.0, 1.0);
 
-    assert(t.x == 10.0);
-    assert(t.y == 5.0);
-    assert(t.z == 15.0);
-    assert(t.w == 1.0);
+    assert(_fequals(t.x, 10.0));
+    assert(_fequals(t.y, 5.0));
+    assert(_fequals(t.z, 15.0));
+    assert(_fequals(t.w, 1.0));
 }
 
 void test_is_point(void)
@@ -83,10 +83,10 @@ void test_point(void)
     tuple_t p = point(4, -4, 3);
     tuple_t comp = tuple(4, -4, 3, 1);
 
-    assert(p.x == comp.x);
-    assert(p.y == comp.y);
-    assert(p.z == comp.z);
-    assert(p.w == comp.w);
+    assert(_fequals(p.x, comp.x));
+    assert(_fequals(p.y, comp.y));
+    assert(_fequals(p.z, comp.z));
+    assert(_fequals(p.w, comp.w));
 }
 
 void test_vector(void)
@@ -94,10 +94,10 @@ void test_vector(void)
     tuple_t v = vector(4, -4, 3);
     tuple_t comp = tuple(4, -4, 3, 0);
 
-    assert(v.x == comp.x);
-    assert(v.y == comp.y);
-    assert(v.z == comp.z);
-    assert(v.w == comp.w);
+    assert(_fequals(v.x, comp.x));
+    assert(_fequals(v.y, comp.y));
+    assert(_fequals(v.z, comp.z));
+    assert(_fequals(v.w, comp.w));
 }
 
 void test_vector_magnitude(void)
@@ -117,10 +117,10 @@ void test_vector_normalize(void)
     tuple_t norm = vector_normalize(vec);
     tuple_t comp = vector(1, 0, 0);
 
-    assert(norm.x == comp.x);
-    assert(norm.y == comp.y);
-    assert(norm.z == comp.z);
-    assert(norm.w == comp.w);
+    assert(_fequals(norm.x, comp.x));
+    assert(_fequals(norm.y, comp.y));
+    assert(_fequals(norm.z, comp.z));
+    assert(_fequals(norm.w, comp.w));
 
     vec = vector(1, 2, 3);
 
@@ -146,10 +146,10 @@ void test_vector_zero(void)
     tuple_t zero = vector_zero();
     tuple_t comp = vector(0, 0, 0);
 
-    assert(zero.x == comp.x);
-    assert(zero.y == comp.y);
-    assert(zero.z == comp.z);
-    assert(zero.w == comp.w);
+    assert(_fequals(zero.x, comp.x));
+    assert(_fequals(zero.y, comp.y));
+    assert(_fequals(zero.z, comp.z));
+    assert(_fequals(zero.w, comp.w));
 }
 
 void test_tuple_add(void)
@@ -160,10 +160,10 @@ void test_tuple_add(void)
     tuple_t sum = tuple_add(a1, a2);
     tuple_t comp = tuple(1, 1, 6, 1);
 
-    assert(sum.x == comp.x);
-    assert(sum.y == comp.y);
-    assert(sum.z == comp.z);
-    assert(sum.w == comp.w);
+    assert(_fequals(sum.x, comp.x));
+    assert(_fequals(sum.y, comp.y));
+    assert(_fequals(sum.z, comp.z));
+    assert(_fequals(sum.w, comp.w));
 }
 
 void test_tuple_sub_point(void)
@@ -174,10 +174,10 @@ void test_tuple_sub_point(void)
     tuple_t sub = tuple_sub(p1, p2);
     tuple_t comp = vector(-2, -4, -6);
 
-    assert(sub.x == comp.x);
-    assert(sub.y == comp.y);
-    assert(sub.z == comp.z);
-    assert(sub.w == comp.w);
+    assert(_fequals(sub.x, comp.x));
+    assert(_fequals(sub.y, comp.y));
+    assert(_fequals(sub.z, comp.z));
+    assert(_fequals(sub.w, comp.w));
 }
 
 void test_tuple_sub_point_vector(void)
@@ -188,10 +188,10 @@ void test_tuple_sub_point_vector(void)
     tuple_t sub = tuple_sub(p1, vec);
     tuple_t comp = point(-2, -4, -6);
 
-    assert(sub.x == comp.x);
-    assert(sub.y == comp.y);
-    assert(sub.z == comp.z);
-    assert(sub.w == comp.w);
+    assert(_fequals(sub.x, comp.x));
+    assert(_fequals(sub.y, comp.y));
+    assert(_fequals(sub.z, comp.z));
+    assert(_fequals(sub.w, comp.w));
 }
 
 void test_tuple_sub_vector_vector(void)
@@ -202,10 +202,10 @@ void test_tuple_sub_vector_vector(void)
     tuple_t sub = tuple_sub(vec1, vec2);
     tuple_t comp = vector(-2, -4, -6);
 
-    assert(sub.x == comp.x);
-    assert(sub.y == comp.y);
-    assert(sub.z == comp.z);
-    assert(sub.w == comp.w);
+    assert(_fequals(sub.x, comp.x));
+    assert(_fequals(sub.y, comp.y));
+    assert(_fequals(sub.z, comp.z));
+    assert(_fequals(sub.w, comp.w));
 }
 
 void test_tuple_sub_vector_from_zero_vector(void)
@@ -216,10 +216,10 @@ void test_tuple_sub_vector_from_zero_vector(void)
     tuple_t sub = tuple_sub(zero, vec);
     tuple_t comp = vector(-1, 2, -3);
 
-    assert(sub.x == comp.x);
-    assert(sub.y == comp.y);
-    assert(sub.z == comp.z);
-    assert(sub.w == comp.w);
+    assert(_fequals(sub.x, comp.x));
+    assert(_fequals(sub.y, comp.y));
+    assert(_fequals(sub.z, comp.z));
+    assert(_fequals(sub.w, comp.w));
 }
 
 void test_tuple_negate(void)
@@ -229,10 +229,10 @@ void test_tuple_negate(void)
     tuple_t minus_a = tuple_negate(a);
     tuple_t comp = tuple(-1, 2, -3, 4);
 
-    assert(minus_a.x == comp.x);
-    assert(minus_a.y == comp.y);
-    assert(minus_a.z == comp.z);
-    assert(minus_a.w == comp.w);
+    assert(_fequals(minus_a.x, comp.x));
+    assert(_fequals(minus_a.y, comp.y));
+    assert(_fequals(minus_a.z, comp.z));
+    assert(_fequals(minus_a.w, comp.w));
 }
 
 void test_tuple_mul_scalar(void)
@@ -242,10 +242,10 @@ void test_tuple_mul_scalar(void)
     tuple_t mul = tuple_mul(a, 3.5);
     tuple_t comp = tuple(3.5, -7, 10.5, -14);
 
-    assert(mul.x == comp.x);
-    assert(mul.y == comp.y);
-    assert(mul.z == comp.z);
-    assert(mul.w == comp.w);
+    assert(_fequals(mul.x, comp.x));
+    assert(_fequals(mul.y, comp.y));
+    assert(_fequals(mul.z, comp.z));
+    assert(_fequals(mul.w, comp.w));
 }
 
 void test_tuple_mul_fraction(void)
@@ -255,10 +255,10 @@ void test_tuple_mul_fraction(void)
     tuple_t mul = tuple_mul(a, 0.5);
     tuple_t comp = tuple(0.5, -1, 1.5, -2);
 
-    assert(mul.x == comp.x);
-    assert(mul.y == comp.y);
-    assert(mul.z == comp.z);
-    assert(mul.w == comp.w);
+    assert(_fequals(mul.x, comp.x));
+    assert(_fequals(mul.y, comp.y));
+    assert(_fequals(mul.z, comp.z));
+    assert(_fequals(mul.w, comp.w));
 }
 
 void test_tuple_div(void)
@@ -268,8 +268,8 @@ void test_tuple_div(void)
     tuple_t div = tuple_div(a, 2);
     tuple_t comp = tuple(0.5, -1, 1.5, -2);
 
-    assert(div.x == comp.x);
-    assert(div.y == comp.y);
-    assert(div.z == comp.z);
-    assert(div.w == comp.w);
+    assert(_fequals(div.x, comp.x));
+    assert(_fequals(div.y, comp.y));
+    assert(_fequals(div.z, comp.z));
+    assert(_fequals(div.w, comp.w));
 }
