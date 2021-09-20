@@ -11,6 +11,7 @@ void test_vector(void);
 void test_vector_magnitude(void);
 void test_vector_magnitude_normalized_equals_zero(void);
 void test_vector_normalize(void);
+void test_vector_cross(void);
 void test_vector_zero(void);
 void test_tuple_add(void);
 void test_tuple_sub_point(void);
@@ -39,6 +40,7 @@ int main(void)
     test_vector_magnitude();
     test_vector_magnitude_normalized_equals_zero();
     test_vector_normalize();
+    test_vector_cross();
     test_vector_zero();
     test_tuple_add();
     test_tuple_sub_point();
@@ -110,6 +112,28 @@ void test_vector_magnitude(void)
 
     assert(vector_magnitude(vector(1, 2, 3)) == sqrtf(14));
     assert(vector_magnitude(vector(-1, -2, -3)) == sqrtf(14));
+}
+
+void test_vector_cross(void)
+{
+    tuple_t a = vector(1, 2, 3);
+    tuple_t b = vector(2, 3, 4);
+
+    tuple_t comp1 = vector(-1, 2, -1);
+    tuple_t cross = vector_cross(a, b);
+
+    assert(_fequals(cross.x, comp1.x));
+    assert(_fequals(cross.y, comp1.y));
+    assert(_fequals(cross.z, comp1.z));
+    assert(_fequals(cross.w, comp1.w));
+
+    tuple_t comp2 = vector(1, -2, 1);
+    cross = vector_cross(b, a);
+
+    assert(_fequals(cross.x, comp2.x));
+    assert(_fequals(cross.y, comp2.y));
+    assert(_fequals(cross.z, comp2.z));
+    assert(_fequals(cross.w, comp2.w));
 }
 
 void test_vector_normalize(void)

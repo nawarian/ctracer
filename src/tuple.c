@@ -107,6 +107,15 @@ tuple_t vector(float x, float y, float z)
     return (tuple_t) { x, y, z, 0.0 };
 }
 
+tuple_t vector_cross(tuple_t vec1, tuple_t vec2)
+{
+    return vector(
+        vec1.y * vec2.z - vec1.z * vec2.y,
+        vec1.z * vec2.x - vec1.x * vec2.z,
+        vec1.x * vec2.y - vec1.y * vec2.x
+    );
+}
+
 tuple_t vector_zero(void)
 {
     return vector(0, 0, 0);
