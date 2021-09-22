@@ -15,6 +15,8 @@ int main(void)
     test_color_sub();
     test_color_mul();
     test_color_blend();
+
+    return 0;
 }
 
 void test_color(void)
