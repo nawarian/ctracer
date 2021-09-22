@@ -1,7 +1,6 @@
 #include "tuple.h"
+#include "utils/float.h"
 #include <assert.h>
-#include <math.h>
-#include <stdbool.h>
 
 void test_tuple(void);
 void test_is_point(void);
@@ -23,12 +22,6 @@ void test_tuple_mul_scalar(void);
 void test_tuple_mul_fraction(void);
 void test_tuple_div(void);
 void test_tuple_dot(void);
-
-// float comparison helper function
-bool _fequals(float f1, float f2)
-{
-    return fabsf(f1 - f2) < 0.00001;
-}
 
 int main(void)
 {
